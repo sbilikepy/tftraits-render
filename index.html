@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tftraits.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF Traits Calculator</title>
+</head>
+<body>
+<form method="post" action="/">
+    <label for="character">Character name:</label>
+    <input type="text" id="character" name="character" required>
+    <button type="submit">Add Character</button>
+</form>
+
+<h2>Your composition:</h2>
+<ul>
+    {% for char in composition %}
+    <li>{{ char }}</li>
+    {% endfor %}
+</ul>
+<form method="post" action="/reset">
+    <button type="submit">Reset</button>
+</form>
+<h2>Your traits:</h2>
+<ul>
+    {% for trait in capped_traits %}
+    <li>{{ trait }}</li>
+    {% endfor %}
+    {% for trait in breakpoint_traits %}
+    <li>{{ trait }}</li>
+    {% endfor %}
+    {% for trait in remaining_traits %}
+    <li>{{ trait }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Priorities:</h2>
+<p>First prio: {% for trait in first_prior %}{{ trait }}, {% endfor %}</p>
+<p>Second prio: {% for trait in second_prior %}{{ trait }}, {% endfor %}</p>
+<p>Third prio: {% for trait in third_prior %}{{ trait }}, {% endfor %}</p>
+<p>No prio: {% for trait in no_prior %}{{ trait }}, {% endfor %}</p>
+
+<h2>Suggestions</h2>
+<ul>
+    {% for score, characters in suggestions.items() %}
+    <li>{{ score }} points: {{ ', '.join(characters) }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

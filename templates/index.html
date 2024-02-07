@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tftraits.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='spat.webp') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFTraits</title>
+</head>
+<body>
+<form method="post" action="/">
+    <label for="character">Character name:</label>
+    <input type="text" id="character" name="character" required>
+    <button type="submit">Add Character</button>
+</form>
+
+<h2>Your composition:</h2>
+<ul>
+    {% for char in composition %}
+    <li>{{ char }}</li>
+    {% endfor %}
+</ul>
+<form method="post" action="/reset">
+    <button type="submit">Reset</button>
+</form>
+<h2>Your traits:</h2>
+<ul>
+    {% for trait in capped_traits %}
+    <li><span style="{% if 'CAPPED' in trait %}font-weight: bold; color: orange;{% endif %}">{{ trait }}</span></li>
+    {% endfor %}
+    {% for trait in breakpoint_traits %}
+    <li><span style="{% if 'BREAKPOINT' in trait %}font-weight: bold; color: purple;{% endif %}">{{ trait }}</span></li>
+    {% endfor %}
+    {% for trait in remaining_traits %}
+    <li><span style="{% if '+2' in trait %}color: grey;{% endif %}">{{ trait }}</span></li>
+
+    {% endfor %}
+</ul>
+
+
+<h2>Priorities:</h2>
+{% if first_prior %}
+<p>First prio: {{ first_prior }}</p>
+{% endif %}
+{% if second_prior %}
+<p>Second prio: {{ second_prior }}</p>
+{% endif %}
+{% if third_prior %}
+<p>Third prio: {{ third_prior }}</p>
+{% endif %}
+{% if no_prior %}
+<p>No prio: {{ no_prior }}</p>
+{% endif %}
+
+<h2 class="suggestions">Suggestions</h2>
+<ul>
+    {% for score, characters in suggestions.items() %}
+    <li>
+        {{ score }} points:
+        {% for character in characters %}
+        <a href="#" class="character-link" data-character="{{ character }}">{{ character }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </li>
+    {% endfor %}
+</ul>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var characterLinks = document.querySelectorAll('.character-link');
+        characterLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var characterName = link.getAttribute('data-character');
+                document.getElementById('character').value = characterName;
+                document.querySelector('form').submit();
+            });
+        });
+    });
+</script>
+<footer>
+        <p><a href="https://github.com/sbilikepy/BS_workspace/tree/master/tftraits">github</a></p>
+    </footer>
+</body>
+</html>

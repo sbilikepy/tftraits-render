@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <label for="character">Character name:</label>
+        <input type="text" id="character" name="character" required>
+        <input type="submit" value="Add Character">
+    </form>
+
+    <!-- Add the rest of your HTML content here -->
+
+    <p>Your composition: {{ current_composition }}</p>
+    <p>Capped traits: {{ capped_traits }}</p>
+    <p>Breakpoint traits: {{ breakpoint_traits }}</p>
+    <p>Remaining traits: {{ remaining_traits }}</p>
+    <p>First prio: {{ first_prior }}</p>
+    <p>Second prio: {{ second_prior }}</p>
+    <p>Third prio: {{ third_prior }}</p>
+    <p>No prio: {{ no_prior }}</p>
+    <p>Scoreboard: {{ scoreboard }}</p>
+</body>
+</html>

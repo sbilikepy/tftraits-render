@@ -1,0 +1,114 @@
+    body {
+        font-family: 'Arial', sans-serif;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        /*background-image: url('/static/peng.webp');*/
+        background-size: 15% auto;
+        background-position: right 200px top 80px;
+        background-repeat: no-repeat;
+        color: #000;
+        font-weight: normal;
+        background-color: mintcream;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    a.character-link {
+        text-decoration: none;
+        color: inherit;
+        border: none;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        padding: 5px;
+    }
+
+    h2 {
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        max-width: 440px;
+        text-align: left;
+    }
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    .suggestions {
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+
+        overflow: hidden; /* Добавьте overflow: hidden; чтобы рамка охватывала весь контент */
+    }
+
+    .suggestions * {
+        box-sizing: border-box; /* Убедитесь, что размеры элементов учитывают границы и отступы */
+    }
+
+    .suggestions ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .suggestions ul li {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+        background-color: yellow;
+    }
+
+    .suggestions a.character-link {
+        background-color: white;
+        text-align: right;
+        margin: 2px;
+        border: solid thin transparent;
+        font-weight: normal;
+        background-color: purple;
+    }
+
+    .suggestions a.character-link:first-child {
+        font-weight: bold;
+    }
+
+    .suggestions a.character-link:hover {
+        border-color: #000;
+        border: solid thin;
+    }
+a:hover {
+    border: 1px solid #000; /* тонкая рамка цвета чёрного */
+}
+
+
+footer {
+    height: 5px;
+    width: 100%;
+    color: white;
+    text-align: left;
+    padding: 5px;
+    position: static;
+    bottom: 0;
+
+}
